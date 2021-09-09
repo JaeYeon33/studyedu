@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+<div th:replace="fragments.html :: main-nav"></div>
 
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>학과생성</h2>
+    </div>
+    <div class="row justify-content-center">
+        <form class="needs-validation col-sm-6" action="#"
+              th:action="@{/add-department}" th:object="${departForm}" method="post" novalidate>
+
+            <div class="form-group">
+                <label for="name">부서명</label>
+                <input id="name" type="text" th:field="*{name}" class="form-control"
+                       placeholder="부서명(학과명)" aria-describedby="nameHelp" required >
+                <small id="nameHelp" class="form-text text-muted">
+                    부서명을 입력해주세요.
+                </small>
+                <small class="invalid-feedback">부서명을 입력해주세요.</small>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">dname Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="loc">위치</label>
+                <input id="loc" type="text" th:field="*{loc}" class="form-control"
+                       placeholder="위치" aria-describedby="locHelp" required >
+                <small id="locHelp" class="form-text text-muted">
+                    위치를 입력해주세요.
+                </small>
+                <small class="invalid-feedback">위치를 입력해주세요.</small>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('loc')}" th:errors="*{loc}">loc Error</small>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit"
+                        aria-describedby="submitHelp">가입하기
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div th:replace="fragments.html :: footer"></div>
+</div>
+<script th:replace="fragments.html :: form-validation"></script>
 </body>
 </html>

@@ -13,7 +13,6 @@ public class SignUpFormValidator implements Validator {
 
     private final AccountRepository accountRepository;
 
-
     @Override
     public boolean supports(Class<?> clazz) {
         return clazz.isAssignableFrom(SignUpForm.class);

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+<div th:replace="fragments.html :: main-nav"></div>
+
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>학과 수정</h2>
+    </div>
+    <div class="row justify-content-center">
+        <form class="col-sm-10" action="#"
+              th:action="@{}" th:object="${department}" method="post" novalidate>>
+            <div class="form-group">
+                <label for="departId">학과이름</label>
+                <input id="departId" type="text" th:value="${department.id}" class="form-control"
+                       placeholder="학과이름" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="name">학과이름</label>
+                <input id="name" type="text" th:value="${department.name}" class="form-control"
+                       placeholder="부서명">
+                <small></small>
+            </div>
+
+            <div class="form-group">
+                <label for="loc">위치</label>
+                <input id="loc" type="text" th:value="${department.loc}" class="form-control"
+                       placeholder="위치" aria-describedby="locHelp">
+                <small></small>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit"
+                        aria-describedby="submitHelp">수정완료
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <br />
+    <br />
+    <div th:replace="fragments.html :: footer"></div>
+</div>
+<script th:replace="fragments.html :: form-validation"></script>
+</body>
+</html>
